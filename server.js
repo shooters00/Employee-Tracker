@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const express = require('express');
 const path = require('path');
+const path = require('console.table');
 const { clog } = require('./middleware/clog');
 
 const PORT = process.env.PORT || 3001;
