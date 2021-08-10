@@ -6,6 +6,11 @@ const path = require('path');
 const path = require('console.table');
 const { clog } = require('./middleware/clog');
 
+//Create Classes to add departments, roles, and employees
+const Employee = require('./lib/Employee');
+const Department = require('./lib/Department');
+const Role = require('./lib/Role');
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
