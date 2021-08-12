@@ -3,13 +3,15 @@ const inquirer = require('inquirer');
 const mysql = require('mysql2');
 const express = require('express');
 const path = require('path');
-const path = require('console.table');
+const consoleTable = require('console.table');
 const { clog } = require('./middleware/clog');
 
-//Create Classes to add departments, roles, and employees
-const Employee = require('./lib/Employee');
-const Department = require('./lib/Department');
-const Role = require('./lib/Role');
+const {Department, Role, Employee} = require('./lib/models/');
+const DepartmentQuery = require('./db/DepartmentQuery');
+const db = require('./db/sqlLogin');
+const questions = require('./lib/questions');
+const {switchMe, choice} = require('./lib/switchMe');
+//const {Department, vieAllDepartments} = require('./lib/Department');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -23,27 +25,30 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
-// Connect to database
-const db = mysql.createConnection(
-  {
-    host: 'localhost',
-    // MySQL username,
-    user: 'root',
-    // MySQL password
-    password: 'root',
-    database: 'classlist_db'
-  },
-  console.log(`Connected to the classlist_db database.`)
-);
+//Login to database
+db;
 
-/* Use this in inquirer
-// Query database
-db.query('SELECT * FROM students', function (err, results) {
-    console.log(results);
-  });
+const start = () => {
+  inquirer
+  .prompt(questions)
+  .then((data) => {
+    console.log(data);
+    switchMe(data);
+  }).then(() => {
+    console.log(choice);
+    if(choice === 'Quit') {
+      theEnd();
+    } else {
+      start();
+    }
+    
+  })
+  .catch((err) => console.log(err));
+}
 
-*/
+const theEnd = () => {
+  console.log("Thanks for using this Employee Tracker.");
+}
 
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
+console.log("Starting...");
+start();
