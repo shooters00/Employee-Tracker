@@ -11,6 +11,7 @@ const DepartmentQuery = require('./db/DepartmentQuery');
 const db = require('./db/sqlLogin');
 const questions = require('./lib/questions');
 const {switchMe, choice} = require('./lib/switchMe');
+const { TIMEOUT } = require('dns');
 //const {Department, vieAllDepartments} = require('./lib/Department');
 
 const PORT = process.env.PORT || 3001;
@@ -33,15 +34,7 @@ const start = () => {
   .prompt(questions)
   .then((data) => {
     console.log(data);
-    switchMe(data);
-  }).then(() => {
-    console.log(choice);
-    if(choice === 'Quit') {
-      theEnd();
-    } else {
-      start();
-    }
-    
+    switchMe(data, start, theEnd);
   })
   .catch((err) => console.log(err));
 }
