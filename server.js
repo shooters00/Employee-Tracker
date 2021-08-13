@@ -30,6 +30,7 @@ app.use(express.static('public'));
 db;
 
 const start = () => {
+  
   inquirer
   .prompt(questions)
   .then((data) => {
@@ -40,7 +41,10 @@ const start = () => {
 }
 
 const theEnd = () => {
+  console.log("\n");
   console.log("Thanks for using this Employee Tracker.");
+  console.log("\n");
+  process.exit();
 }
 
 console.log("Starting...");
