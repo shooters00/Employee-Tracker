@@ -34,7 +34,6 @@ const start = () => {
   inquirer
   .prompt(questions)
   .then((data) => {
-    console.log(data);
     switchMe(data, start, theEnd);
   })
   .catch((err) => console.log(err));
