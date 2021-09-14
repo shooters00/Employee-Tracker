@@ -6,7 +6,7 @@
 Build a command-line application from scratch to manage a company's employee database, using Node.js, Inquirer, and MySQL.
 
 ## Video
-https://github.com/shooters00/Employee-Tracker/blob/main/video/Employee%20Tracker.mp4
+https://drive.google.com/file/d/1KzTp9KXUx3Dwcok-Aj_YtWJrFnq2Ax0o/view?usp=sharing
 
 #### Table of Contents
 1. [Installation](#installation)
