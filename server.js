@@ -1,7 +1,7 @@
 //Import needed components
 const inquirer = require('inquirer');
 const mysql = require('mysql2');
-const express = require('express');
+//const express = require('express');
 const path = require('path');
 const consoleTable = require('console.table');
 const { clog } = require('./middleware/clog');
@@ -14,17 +14,17 @@ const {switchMe, choice} = require('./lib/switchMe');
 const { TIMEOUT } = require('dns');
 //const {Department, vieAllDepartments} = require('./lib/Department');
 
-const PORT = process.env.PORT || 3001;
-const app = express();
+//const PORT = process.env.PORT || 3001;
+//const app = express();
 
 // Import custom middleware, "cLog"
-app.use(clog);
+//app.use(clog);
 
 // Express middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+//app.use(express.urlencoded({ extended: false }));
+//app.use(express.json());
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 
 //Login to database
 db;
